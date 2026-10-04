@@ -1,0 +1,7 @@
+{
+  "minimum_map_picks": 20,
+  "minimum_side_samples": 20,
+  "minimum_composition_appearances": 10,
+  "wilson_z": 1.96,
+  "top_agent_limit": 10
+}

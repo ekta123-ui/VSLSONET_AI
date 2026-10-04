@@ -1,0 +1,112 @@
+{
+  "model": "Logistic Regression",
+  "task": "Predict team 1 map win from map, patch, and pre-match agent/role lineups",
+  "source": "Valorant Pro Matches Statistics; Kaggle snapshot through 2023-04-16",
+  "features": [
+    "map",
+    "patch",
+    "team agent indicators",
+    "team role counts"
+  ],
+  "excluded_to_prevent_leakage": [
+    "map scores and winner",
+    "post-match rating, ACS, K/D, KAST, ADR, headshots, and first kills/deaths",
+    "T-side and CT-side player metrics"
+  ],
+  "split": "GroupShuffleSplit by match date and unordered team pair; mirrored training rows only",
+  "map_outcomes": 24918,
+  "series_groups": 12045,
+  "train_map_outcomes": 19843,
+  "test_map_outcomes": 5075,
+  "training_time_seconds": 0.32347139999910723,
+  "inference_latency_ms_per_map": 0.0035018325132992246,
+  "accuracy": 0.5121182266009853,
+  "precision_macro": 0.518066951851712,
+  "recall_macro": 0.5186381803283278,
+  "f1_macro": 0.5102791607934618,
+  "classification_report": {
+    "Team 2 wins": {
+      "precision": 0.4240177909562639,
+      "recall": 0.5537270087124879,
+      "f1-score": 0.4802686817800168,
+      "support": 2066.0
+    },
+    "Team 1 wins": {
+      "precision": 0.6121161127471603,
+      "recall": 0.4835493519441675,
+      "f1-score": 0.5402896398069068,
+      "support": 3009.0
+    },
+    "accuracy": 0.5121182266009853,
+    "macro avg": {
+      "precision": 0.518066951851712,
+      "recall": 0.5186381803283278,
+      "f1-score": 0.5102791607934618,
+      "support": 5075.0
+    },
+    "weighted avg": {
+      "precision": 0.53554249051662,
+      "recall": 0.5121182266009853,
+      "f1-score": 0.5158554921648271,
+      "support": 5075.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      1144,
+      922
+    ],
+    [
+      1554,
+      1455
+    ]
+  ],
+  "baseline": {
+    "model": "Most-frequent class",
+    "accuracy": 0.5929064039408867,
+    "f1_macro": 0.37221672439386444,
+    "classification_report": {
+      "Team 2 wins": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2066.0
+      },
+      "Team 1 wins": {
+        "precision": 0.5929064039408867,
+        "recall": 1.0,
+        "f1-score": 0.7444334487877289,
+        "support": 3009.0
+      },
+      "accuracy": 0.5929064039408867,
+      "macro avg": {
+        "precision": 0.29645320197044334,
+        "recall": 0.5,
+        "f1-score": 0.37221672439386444,
+        "support": 5075.0
+      },
+      "weighted avg": {
+        "precision": 0.35153800383411393,
+        "recall": 0.5929064039408867,
+        "f1-score": 0.4413793590940446,
+        "support": 5075.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        2066
+      ],
+      [
+        0,
+        3009
+      ]
+    ]
+  },
+  "limitations": [
+    "The source has no explicit match ID, event, region, or starting-side data.",
+    "The split groups same-date team pairings to reduce series leakage but cannot guarantee event-level separation.",
+    "The target is map winner; no side-specific win prediction is supported.",
+    "The dataset is historical through April 2023; performance may not transfer to current patches."
+  ]
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VALOSENT AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark">VAL</span>
+          <div>
+            <p class="eyebrow">MCA Major Project</p>
+            <h1>VALOSENT AI</h1>
+          </div>
+        </div>
+        <nav class="nav">
+          <a href="#">Home</a>
+          <a href="#analyzer">Review Analyzer</a>
+          <a href="#analytics">Analytics</a>
+          <a href="#about">About</a>
+        </nav>
+      </header>
+
+      <main class="content">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Sentiment Analysis on VALORANT Reviews</p>
+            <h2>Compare classical ML and deep learning models on real player feedback.</h2>
+            <p>
+              This application evaluates VALORANT reviews using a research pipeline built around
+              SVM and LSTM sentiment classification.
+            </p>
+          </div>
+          <div class="hero-panel">
+            <div class="metric-box">
+              <span>Primary Goal</span>
+              <strong>Negative / Neutral / Positive</strong>
+            </div>
+            <div class="metric-box">
+              <span>Models</span>
+              <strong>SVM + LSTM</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="analyzer" class="analyzer">
+          <div class="panel-header">
+            <h3>Review Analyzer</h3>
+          </div>
+
+          <form id="predict-form">
+            <textarea
+              id="reviewInput"
+              name="review"
+              rows="8"
+              placeholder="Paste a VALORANT review here..."
+            ></textarea>
+            <div class="actions">
+              <button type="submit">Analyze Sentiment</button>
+              <button type="button" class="secondary" id="clearBtn">Clear</button>
+            </div>
+          </form>
+
+          <div id="resultBox" class="result-box hidden">
+            <div class="result-header">
+              <h4>Prediction Result</h4>
+            </div>
+            <div class="result-grid">
+              <div class="result-card">
+                <span class="label">SVM</span>
+                <strong id="svmLabel">-</strong>
+                <small id="svmConfidence">Confidence unavailable</small>
+              </div>
+              <div class="result-card">
+                <span class="label">LSTM</span>
+                <strong id="lstmLabel">-</strong>
+                <small id="lstmConfidence">Confidence unavailable</small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="analytics" class="analytics">
+          <div class="panel-header">
+            <h3>Research Overview</h3>
+          </div>
+          <div class="overview-grid">
+            <div class="info-card">
+              <span>Dataset</span>
+              <strong>VALORANT Metacritic Reviews</strong>
+            </div>
+            <div class="info-card">
+              <span>Evaluation</span>
+              <strong>Accuracy, Precision, Recall, F1</strong>
+            </div>
+            <div class="info-card">
+              <span>Key challenge</span>
+              <strong>Imbalanced classes</strong>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="about">
+          <div class="panel-header">
+            <h3>About the Project</h3>
+          </div>
+          <p>
+            VALOSENT AI focuses on comparing classical ML and deep learning approaches for
+            sentiment analysis in the gaming domain. The sentiment signal is derived from player
+            review scores, with the final goal of building a deployable Flask application.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

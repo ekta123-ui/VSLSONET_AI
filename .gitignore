@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.DS_Store
+models/*.pkl
+models/*.keras
+results/*.csv
+data/user_reviews.parquet
+data/raw/*.csv
+data/raw/**/*.csv
+data/processed/
